@@ -1,4 +1,4 @@
-grammar Privacy;
+grammar privacy;
 
 policy     : rule+ ;
 rule       : 'ALLOW' | 'DENY' action 'TO' target ('WHEN' condition)? ';' ;

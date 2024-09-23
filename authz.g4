@@ -1,4 +1,4 @@
-grammar AuthZ;
+grammar authz;
 
 policy     : rule+ ;
 rule: ('ALLOW' | 'DENY') subject 'FROM' action 'TO' object ('WHEN' condition)? ';' ;

@@ -1,8 +1,9 @@
 module github.com/policy_engine
 
-go 1.21.13
+go 1.22
 
-require (
-	github.com/antlr4-go/antlr v0.0.0-20230518091524-98b52378c522 // indirect
-	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc // indirect
-)
+toolchain go1.22.7
+
+require github.com/antlr4-go/antlr/v4 v4.13.1
+
+require golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
