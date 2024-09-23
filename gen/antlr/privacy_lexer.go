@@ -1,4 +1,4 @@
-// Code generated from privacy.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from antlr/privacy.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
 package parser
 
