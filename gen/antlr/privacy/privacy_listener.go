@@ -1,11 +1,11 @@
-// Code generated from antlr/authz.g4 by ANTLR 4.13.2. DO NOT EDIT.
+// Code generated from privacy.g4 by ANTLR 4.13.2. DO NOT EDIT.
 
-package parser // authz
+package parser // privacy
 
 import "github.com/antlr4-go/antlr/v4"
 
-// authzListener is a complete listener for a parse tree produced by authzParser.
-type authzListener interface {
+// privacyListener is a complete listener for a parse tree produced by privacyParser.
+type privacyListener interface {
 	antlr.ParseTreeListener
 
 	// EnterPolicy is called when entering the policy production.
@@ -14,14 +14,11 @@ type authzListener interface {
 	// EnterRule is called when entering the rule production.
 	EnterRule(c *RuleContext)
 
-	// EnterSubject is called when entering the subject production.
-	EnterSubject(c *SubjectContext)
-
 	// EnterAction is called when entering the action production.
 	EnterAction(c *ActionContext)
 
-	// EnterObject is called when entering the object production.
-	EnterObject(c *ObjectContext)
+	// EnterTarget is called when entering the target production.
+	EnterTarget(c *TargetContext)
 
 	// EnterCondition is called when entering the condition production.
 	EnterCondition(c *ConditionContext)
@@ -32,14 +29,11 @@ type authzListener interface {
 	// ExitRule is called when exiting the rule production.
 	ExitRule(c *RuleContext)
 
-	// ExitSubject is called when exiting the subject production.
-	ExitSubject(c *SubjectContext)
-
 	// ExitAction is called when exiting the action production.
 	ExitAction(c *ActionContext)
 
-	// ExitObject is called when exiting the object production.
-	ExitObject(c *ObjectContext)
+	// ExitTarget is called when exiting the target production.
+	ExitTarget(c *TargetContext)
 
 	// ExitCondition is called when exiting the condition production.
 	ExitCondition(c *ConditionContext)
