@@ -34,33 +34,39 @@ func privacyParserInit() {
 	staticData := &PrivacyParserStaticData
 	staticData.LiteralNames = []string{
 		"", "'ALLOW'", "'DENY'", "'TO'", "'WHEN'", "';'", "'share'", "'collect'",
-		"'use'", "'third parties'", "'partners'", "'internal services'", "'time is within'",
-		"'location is'",
+		"'use'", "'third parties'", "'partners'", "'internal services'", "'AND'",
+		"'OR'", "'time_range'", "'='", "'location'",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "TIME_RANGE",
-		"LOCATION", "WS",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+		"TIME_RANGE", "LOCATION", "WS",
 	}
 	staticData.RuleNames = []string{
-		"policy", "rule", "action", "target", "condition",
+		"policy", "rule", "action", "target", "condition", "condition_",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 16, 39, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
-		4, 1, 0, 4, 0, 12, 8, 0, 11, 0, 12, 0, 13, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-		1, 1, 1, 1, 3, 1, 23, 8, 1, 1, 1, 1, 1, 3, 1, 27, 8, 1, 1, 2, 1, 2, 1,
-		3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 3, 4, 37, 8, 4, 1, 4, 0, 0, 5, 0, 2, 4,
-		6, 8, 0, 2, 1, 0, 6, 8, 1, 0, 9, 11, 37, 0, 11, 1, 0, 0, 0, 2, 26, 1, 0,
-		0, 0, 4, 28, 1, 0, 0, 0, 6, 30, 1, 0, 0, 0, 8, 36, 1, 0, 0, 0, 10, 12,
-		3, 2, 1, 0, 11, 10, 1, 0, 0, 0, 12, 13, 1, 0, 0, 0, 13, 11, 1, 0, 0, 0,
-		13, 14, 1, 0, 0, 0, 14, 1, 1, 0, 0, 0, 15, 27, 5, 1, 0, 0, 16, 17, 5, 2,
-		0, 0, 17, 18, 3, 4, 2, 0, 18, 19, 5, 3, 0, 0, 19, 22, 3, 6, 3, 0, 20, 21,
-		5, 4, 0, 0, 21, 23, 3, 8, 4, 0, 22, 20, 1, 0, 0, 0, 22, 23, 1, 0, 0, 0,
-		23, 24, 1, 0, 0, 0, 24, 25, 5, 5, 0, 0, 25, 27, 1, 0, 0, 0, 26, 15, 1,
-		0, 0, 0, 26, 16, 1, 0, 0, 0, 27, 3, 1, 0, 0, 0, 28, 29, 7, 0, 0, 0, 29,
-		5, 1, 0, 0, 0, 30, 31, 7, 1, 0, 0, 31, 7, 1, 0, 0, 0, 32, 33, 5, 12, 0,
-		0, 33, 37, 5, 14, 0, 0, 34, 35, 5, 13, 0, 0, 35, 37, 5, 15, 0, 0, 36, 32,
-		1, 0, 0, 0, 36, 34, 1, 0, 0, 0, 37, 9, 1, 0, 0, 0, 4, 13, 22, 26, 36,
+		4, 1, 19, 53, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 1, 0, 4, 0, 14, 8, 0, 11, 0, 12, 0, 15, 1, 1, 1, 1, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 25, 8, 1, 1, 1, 1, 1, 3, 1, 29, 8, 1, 1,
+		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 3,
+		4, 43, 8, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 3, 5, 51, 8, 5, 1, 5,
+		0, 0, 6, 0, 2, 4, 6, 8, 10, 0, 2, 1, 0, 6, 8, 1, 0, 9, 11, 51, 0, 13, 1,
+		0, 0, 0, 2, 28, 1, 0, 0, 0, 4, 30, 1, 0, 0, 0, 6, 32, 1, 0, 0, 0, 8, 42,
+		1, 0, 0, 0, 10, 50, 1, 0, 0, 0, 12, 14, 3, 2, 1, 0, 13, 12, 1, 0, 0, 0,
+		14, 15, 1, 0, 0, 0, 15, 13, 1, 0, 0, 0, 15, 16, 1, 0, 0, 0, 16, 1, 1, 0,
+		0, 0, 17, 29, 5, 1, 0, 0, 18, 19, 5, 2, 0, 0, 19, 20, 3, 4, 2, 0, 20, 21,
+		5, 3, 0, 0, 21, 24, 3, 6, 3, 0, 22, 23, 5, 4, 0, 0, 23, 25, 3, 8, 4, 0,
+		24, 22, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26, 1, 0, 0, 0, 26, 27, 5,
+		5, 0, 0, 27, 29, 1, 0, 0, 0, 28, 17, 1, 0, 0, 0, 28, 18, 1, 0, 0, 0, 29,
+		3, 1, 0, 0, 0, 30, 31, 7, 0, 0, 0, 31, 5, 1, 0, 0, 0, 32, 33, 7, 1, 0,
+		0, 33, 7, 1, 0, 0, 0, 34, 35, 3, 10, 5, 0, 35, 36, 5, 12, 0, 0, 36, 37,
+		3, 10, 5, 0, 37, 43, 1, 0, 0, 0, 38, 39, 3, 10, 5, 0, 39, 40, 5, 13, 0,
+		0, 40, 41, 3, 10, 5, 0, 41, 43, 1, 0, 0, 0, 42, 34, 1, 0, 0, 0, 42, 38,
+		1, 0, 0, 0, 43, 9, 1, 0, 0, 0, 44, 45, 5, 14, 0, 0, 45, 46, 5, 15, 0, 0,
+		46, 51, 5, 17, 0, 0, 47, 48, 5, 16, 0, 0, 48, 49, 5, 15, 0, 0, 49, 51,
+		5, 18, 0, 0, 50, 44, 1, 0, 0, 0, 50, 47, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0,
+		5, 15, 24, 28, 42, 50,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -112,18 +118,22 @@ const (
 	privacyParserT__10      = 11
 	privacyParserT__11      = 12
 	privacyParserT__12      = 13
-	privacyParserTIME_RANGE = 14
-	privacyParserLOCATION   = 15
-	privacyParserWS         = 16
+	privacyParserT__13      = 14
+	privacyParserT__14      = 15
+	privacyParserT__15      = 16
+	privacyParserTIME_RANGE = 17
+	privacyParserLOCATION   = 18
+	privacyParserWS         = 19
 )
 
 // privacyParser rules.
 const (
-	privacyParserRULE_policy    = 0
-	privacyParserRULE_rule      = 1
-	privacyParserRULE_action    = 2
-	privacyParserRULE_target    = 3
-	privacyParserRULE_condition = 4
+	privacyParserRULE_policy     = 0
+	privacyParserRULE_rule       = 1
+	privacyParserRULE_action     = 2
+	privacyParserRULE_target     = 3
+	privacyParserRULE_condition  = 4
+	privacyParserRULE_condition_ = 5
 )
 
 // IPolicyContext is an interface to support dynamic dispatch.
@@ -240,7 +250,7 @@ func (p *privacyParser) Policy() (localctx IPolicyContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(11)
+	p.SetState(13)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -249,11 +259,11 @@ func (p *privacyParser) Policy() (localctx IPolicyContext) {
 
 	for ok := true; ok; ok = _la == privacyParserT__0 || _la == privacyParserT__1 {
 		{
-			p.SetState(10)
+			p.SetState(12)
 			p.Rule_()
 		}
 
-		p.SetState(13)
+		p.SetState(15)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -395,7 +405,7 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 	p.EnterRule(localctx, 2, privacyParserRULE_rule)
 	var _la int
 
-	p.SetState(26)
+	p.SetState(28)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -405,7 +415,7 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 	case privacyParserT__0:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(15)
+			p.SetState(17)
 			p.Match(privacyParserT__0)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -416,7 +426,7 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 	case privacyParserT__1:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(16)
+			p.SetState(18)
 			p.Match(privacyParserT__1)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -424,11 +434,11 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 			}
 		}
 		{
-			p.SetState(17)
+			p.SetState(19)
 			p.Action_()
 		}
 		{
-			p.SetState(18)
+			p.SetState(20)
 			p.Match(privacyParserT__2)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -436,10 +446,10 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 			}
 		}
 		{
-			p.SetState(19)
+			p.SetState(21)
 			p.Target()
 		}
-		p.SetState(22)
+		p.SetState(24)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -448,7 +458,7 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 
 		if _la == privacyParserT__3 {
 			{
-				p.SetState(20)
+				p.SetState(22)
 				p.Match(privacyParserT__3)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -456,13 +466,13 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 				}
 			}
 			{
-				p.SetState(21)
+				p.SetState(23)
 				p.Condition()
 			}
 
 		}
 		{
-			p.SetState(24)
+			p.SetState(26)
 			p.Match(privacyParserT__4)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -556,7 +566,7 @@ func (p *privacyParser) Action_() (localctx IActionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(28)
+		p.SetState(30)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&448) != 0) {
@@ -648,7 +658,7 @@ func (p *privacyParser) Target() (localctx ITargetContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(30)
+		p.SetState(32)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&3584) != 0) {
@@ -680,8 +690,8 @@ type IConditionContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	TIME_RANGE() antlr.TerminalNode
-	LOCATION() antlr.TerminalNode
+	AllCondition_() []ICondition_Context
+	Condition_(i int) ICondition_Context
 
 	// IsConditionContext differentiates from other interfaces.
 	IsConditionContext()
@@ -719,12 +729,45 @@ func NewConditionContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *ConditionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ConditionContext) TIME_RANGE() antlr.TerminalNode {
-	return s.GetToken(privacyParserTIME_RANGE, 0)
+func (s *ConditionContext) AllCondition_() []ICondition_Context {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(ICondition_Context); ok {
+			len++
+		}
+	}
+
+	tst := make([]ICondition_Context, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(ICondition_Context); ok {
+			tst[i] = t.(ICondition_Context)
+			i++
+		}
+	}
+
+	return tst
 }
 
-func (s *ConditionContext) LOCATION() antlr.TerminalNode {
-	return s.GetToken(privacyParserLOCATION, 0)
+func (s *ConditionContext) Condition_(i int) ICondition_Context {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ICondition_Context); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ICondition_Context)
 }
 
 func (s *ConditionContext) GetRuleContext() antlr.RuleContext {
@@ -750,17 +793,21 @@ func (s *ConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *privacyParser) Condition() (localctx IConditionContext) {
 	localctx = NewConditionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, privacyParserRULE_condition)
-	p.SetState(36)
+	p.SetState(42)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetTokenStream().LA(1) {
-	case privacyParserT__11:
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 3, p.GetParserRuleContext()) {
+	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(32)
+			p.SetState(34)
+			p.Condition_()
+		}
+		{
+			p.SetState(35)
 			p.Match(privacyParserT__11)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -768,18 +815,18 @@ func (p *privacyParser) Condition() (localctx IConditionContext) {
 			}
 		}
 		{
-			p.SetState(33)
-			p.Match(privacyParserTIME_RANGE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.SetState(36)
+			p.Condition_()
 		}
 
-	case privacyParserT__12:
+	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(34)
+			p.SetState(38)
+			p.Condition_()
+		}
+		{
+			p.SetState(39)
 			p.Match(privacyParserT__12)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -787,7 +834,159 @@ func (p *privacyParser) Condition() (localctx IConditionContext) {
 			}
 		}
 		{
-			p.SetState(35)
+			p.SetState(40)
+			p.Condition_()
+		}
+
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// ICondition_Context is an interface to support dynamic dispatch.
+type ICondition_Context interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	TIME_RANGE() antlr.TerminalNode
+	LOCATION() antlr.TerminalNode
+
+	// IsCondition_Context differentiates from other interfaces.
+	IsCondition_Context()
+}
+
+type Condition_Context struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyCondition_Context() *Condition_Context {
+	var p = new(Condition_Context)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = privacyParserRULE_condition_
+	return p
+}
+
+func InitEmptyCondition_Context(p *Condition_Context) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = privacyParserRULE_condition_
+}
+
+func (*Condition_Context) IsCondition_Context() {}
+
+func NewCondition_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Condition_Context {
+	var p = new(Condition_Context)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = privacyParserRULE_condition_
+
+	return p
+}
+
+func (s *Condition_Context) GetParser() antlr.Parser { return s.parser }
+
+func (s *Condition_Context) TIME_RANGE() antlr.TerminalNode {
+	return s.GetToken(privacyParserTIME_RANGE, 0)
+}
+
+func (s *Condition_Context) LOCATION() antlr.TerminalNode {
+	return s.GetToken(privacyParserLOCATION, 0)
+}
+
+func (s *Condition_Context) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Condition_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Condition_Context) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(privacyListener); ok {
+		listenerT.EnterCondition_(s)
+	}
+}
+
+func (s *Condition_Context) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(privacyListener); ok {
+		listenerT.ExitCondition_(s)
+	}
+}
+
+func (p *privacyParser) Condition_() (localctx ICondition_Context) {
+	localctx = NewCondition_Context(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, privacyParserRULE_condition_)
+	p.SetState(50)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetTokenStream().LA(1) {
+	case privacyParserT__13:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(44)
+			p.Match(privacyParserT__13)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(45)
+			p.Match(privacyParserT__14)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(46)
+			p.Match(privacyParserTIME_RANGE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case privacyParserT__15:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(47)
+			p.Match(privacyParserT__15)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(48)
+			p.Match(privacyParserT__14)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(49)
 			p.Match(privacyParserLOCATION)
 			if p.HasError() {
 				// Recognition error - abort rule

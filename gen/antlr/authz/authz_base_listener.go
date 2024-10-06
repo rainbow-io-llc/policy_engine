@@ -56,3 +56,9 @@ func (s *BaseauthzListener) EnterCondition(ctx *ConditionContext) {}
 
 // ExitCondition is called when production condition is exited.
 func (s *BaseauthzListener) ExitCondition(ctx *ConditionContext) {}
+
+// EnterCondition_ is called when production condition_ is entered.
+func (s *BaseauthzListener) EnterCondition_(ctx *Condition_Context) {}
+
+// ExitCondition_ is called when production condition_ is exited.
+func (s *BaseauthzListener) ExitCondition_(ctx *Condition_Context) {}

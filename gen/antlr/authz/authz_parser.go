@@ -35,34 +35,39 @@ func authzParserInit() {
 	staticData.LiteralNames = []string{
 		"", "'ALLOW'", "'DENY'", "'FROM'", "'TO'", "'WHEN'", "';'", "'user'",
 		"'service'", "'share'", "'collect'", "'use'", "'data'", "'feature'",
-		"'time_range'", "'='", "'location'",
+		"'AND'", "'OR'", "'time_range'", "'='", "'location'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-		"TIME_RANGE", "LOCATION", "WS",
+		"", "", "TIME_RANGE", "LOCATION", "WS",
 	}
 	staticData.RuleNames = []string{
-		"policy", "rule", "subject", "action", "object", "condition",
+		"policy", "rule", "subject", "action", "object", "condition", "condition_",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 19, 44, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
-		4, 2, 5, 7, 5, 1, 0, 4, 0, 14, 8, 0, 11, 0, 12, 0, 15, 1, 1, 1, 1, 1, 1,
-		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 26, 8, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1,
-		3, 1, 3, 1, 4, 1, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 3, 5, 42, 8, 5,
-		1, 5, 0, 0, 6, 0, 2, 4, 6, 8, 10, 0, 4, 1, 0, 1, 2, 1, 0, 7, 8, 1, 0, 9,
-		11, 2, 0, 8, 8, 12, 13, 40, 0, 13, 1, 0, 0, 0, 2, 17, 1, 0, 0, 0, 4, 29,
-		1, 0, 0, 0, 6, 31, 1, 0, 0, 0, 8, 33, 1, 0, 0, 0, 10, 41, 1, 0, 0, 0, 12,
-		14, 3, 2, 1, 0, 13, 12, 1, 0, 0, 0, 14, 15, 1, 0, 0, 0, 15, 13, 1, 0, 0,
-		0, 15, 16, 1, 0, 0, 0, 16, 1, 1, 0, 0, 0, 17, 18, 7, 0, 0, 0, 18, 19, 3,
-		4, 2, 0, 19, 20, 5, 3, 0, 0, 20, 21, 3, 6, 3, 0, 21, 22, 5, 4, 0, 0, 22,
-		25, 3, 8, 4, 0, 23, 24, 5, 5, 0, 0, 24, 26, 3, 10, 5, 0, 25, 23, 1, 0,
-		0, 0, 25, 26, 1, 0, 0, 0, 26, 27, 1, 0, 0, 0, 27, 28, 5, 6, 0, 0, 28, 3,
-		1, 0, 0, 0, 29, 30, 7, 1, 0, 0, 30, 5, 1, 0, 0, 0, 31, 32, 7, 2, 0, 0,
-		32, 7, 1, 0, 0, 0, 33, 34, 7, 3, 0, 0, 34, 9, 1, 0, 0, 0, 35, 36, 5, 14,
-		0, 0, 36, 37, 5, 15, 0, 0, 37, 42, 5, 17, 0, 0, 38, 39, 5, 16, 0, 0, 39,
-		40, 5, 15, 0, 0, 40, 42, 5, 18, 0, 0, 41, 35, 1, 0, 0, 0, 41, 38, 1, 0,
-		0, 0, 42, 11, 1, 0, 0, 0, 3, 15, 25, 41,
+		4, 1, 21, 56, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 2, 6, 7, 6, 1, 0, 4, 0, 16, 8, 0, 11, 0, 12, 0, 17, 1, 1,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 28, 8, 1, 1, 1, 1, 1, 1,
+		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1,
+		5, 1, 5, 3, 5, 46, 8, 5, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6, 54,
+		8, 6, 1, 6, 0, 0, 7, 0, 2, 4, 6, 8, 10, 12, 0, 4, 1, 0, 1, 2, 1, 0, 7,
+		8, 1, 0, 9, 11, 2, 0, 8, 8, 12, 13, 52, 0, 15, 1, 0, 0, 0, 2, 19, 1, 0,
+		0, 0, 4, 31, 1, 0, 0, 0, 6, 33, 1, 0, 0, 0, 8, 35, 1, 0, 0, 0, 10, 45,
+		1, 0, 0, 0, 12, 53, 1, 0, 0, 0, 14, 16, 3, 2, 1, 0, 15, 14, 1, 0, 0, 0,
+		16, 17, 1, 0, 0, 0, 17, 15, 1, 0, 0, 0, 17, 18, 1, 0, 0, 0, 18, 1, 1, 0,
+		0, 0, 19, 20, 7, 0, 0, 0, 20, 21, 3, 4, 2, 0, 21, 22, 5, 3, 0, 0, 22, 23,
+		3, 6, 3, 0, 23, 24, 5, 4, 0, 0, 24, 27, 3, 8, 4, 0, 25, 26, 5, 5, 0, 0,
+		26, 28, 3, 10, 5, 0, 27, 25, 1, 0, 0, 0, 27, 28, 1, 0, 0, 0, 28, 29, 1,
+		0, 0, 0, 29, 30, 5, 6, 0, 0, 30, 3, 1, 0, 0, 0, 31, 32, 7, 1, 0, 0, 32,
+		5, 1, 0, 0, 0, 33, 34, 7, 2, 0, 0, 34, 7, 1, 0, 0, 0, 35, 36, 7, 3, 0,
+		0, 36, 9, 1, 0, 0, 0, 37, 38, 3, 12, 6, 0, 38, 39, 5, 14, 0, 0, 39, 40,
+		3, 12, 6, 0, 40, 46, 1, 0, 0, 0, 41, 42, 3, 12, 6, 0, 42, 43, 5, 15, 0,
+		0, 43, 44, 3, 12, 6, 0, 44, 46, 1, 0, 0, 0, 45, 37, 1, 0, 0, 0, 45, 41,
+		1, 0, 0, 0, 46, 11, 1, 0, 0, 0, 47, 48, 5, 16, 0, 0, 48, 49, 5, 17, 0,
+		0, 49, 54, 5, 19, 0, 0, 50, 51, 5, 18, 0, 0, 51, 52, 5, 17, 0, 0, 52, 54,
+		5, 20, 0, 0, 53, 47, 1, 0, 0, 0, 53, 50, 1, 0, 0, 0, 54, 13, 1, 0, 0, 0,
+		4, 17, 27, 45, 53,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -117,19 +122,22 @@ const (
 	authzParserT__13      = 14
 	authzParserT__14      = 15
 	authzParserT__15      = 16
-	authzParserTIME_RANGE = 17
-	authzParserLOCATION   = 18
-	authzParserWS         = 19
+	authzParserT__16      = 17
+	authzParserT__17      = 18
+	authzParserTIME_RANGE = 19
+	authzParserLOCATION   = 20
+	authzParserWS         = 21
 )
 
 // authzParser rules.
 const (
-	authzParserRULE_policy    = 0
-	authzParserRULE_rule      = 1
-	authzParserRULE_subject   = 2
-	authzParserRULE_action    = 3
-	authzParserRULE_object    = 4
-	authzParserRULE_condition = 5
+	authzParserRULE_policy     = 0
+	authzParserRULE_rule       = 1
+	authzParserRULE_subject    = 2
+	authzParserRULE_action     = 3
+	authzParserRULE_object     = 4
+	authzParserRULE_condition  = 5
+	authzParserRULE_condition_ = 6
 )
 
 // IPolicyContext is an interface to support dynamic dispatch.
@@ -246,7 +254,7 @@ func (p *authzParser) Policy() (localctx IPolicyContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(13)
+	p.SetState(15)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -255,11 +263,11 @@ func (p *authzParser) Policy() (localctx IPolicyContext) {
 
 	for ok := true; ok; ok = _la == authzParserT__0 || _la == authzParserT__1 {
 		{
-			p.SetState(12)
+			p.SetState(14)
 			p.Rule_()
 		}
 
-		p.SetState(15)
+		p.SetState(17)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -420,7 +428,7 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(17)
+		p.SetState(19)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == authzParserT__0 || _la == authzParserT__1) {
@@ -431,11 +439,11 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 		}
 	}
 	{
-		p.SetState(18)
+		p.SetState(20)
 		p.Subject()
 	}
 	{
-		p.SetState(19)
+		p.SetState(21)
 		p.Match(authzParserT__2)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -443,11 +451,11 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 		}
 	}
 	{
-		p.SetState(20)
+		p.SetState(22)
 		p.Action_()
 	}
 	{
-		p.SetState(21)
+		p.SetState(23)
 		p.Match(authzParserT__3)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -455,10 +463,10 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 		}
 	}
 	{
-		p.SetState(22)
+		p.SetState(24)
 		p.Object()
 	}
-	p.SetState(25)
+	p.SetState(27)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -467,7 +475,7 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 
 	if _la == authzParserT__4 {
 		{
-			p.SetState(23)
+			p.SetState(25)
 			p.Match(authzParserT__4)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -475,13 +483,13 @@ func (p *authzParser) Rule_() (localctx IRuleContext) {
 			}
 		}
 		{
-			p.SetState(24)
+			p.SetState(26)
 			p.Condition()
 		}
 
 	}
 	{
-		p.SetState(27)
+		p.SetState(29)
 		p.Match(authzParserT__5)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -570,7 +578,7 @@ func (p *authzParser) Subject() (localctx ISubjectContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(29)
+		p.SetState(31)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == authzParserT__6 || _la == authzParserT__7) {
@@ -662,7 +670,7 @@ func (p *authzParser) Action_() (localctx IActionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(31)
+		p.SetState(33)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&3584) != 0) {
@@ -754,7 +762,7 @@ func (p *authzParser) Object() (localctx IObjectContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(33)
+		p.SetState(35)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&12544) != 0) {
@@ -786,8 +794,8 @@ type IConditionContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	TIME_RANGE() antlr.TerminalNode
-	LOCATION() antlr.TerminalNode
+	AllCondition_() []ICondition_Context
+	Condition_(i int) ICondition_Context
 
 	// IsConditionContext differentiates from other interfaces.
 	IsConditionContext()
@@ -825,12 +833,45 @@ func NewConditionContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *ConditionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ConditionContext) TIME_RANGE() antlr.TerminalNode {
-	return s.GetToken(authzParserTIME_RANGE, 0)
+func (s *ConditionContext) AllCondition_() []ICondition_Context {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(ICondition_Context); ok {
+			len++
+		}
+	}
+
+	tst := make([]ICondition_Context, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(ICondition_Context); ok {
+			tst[i] = t.(ICondition_Context)
+			i++
+		}
+	}
+
+	return tst
 }
 
-func (s *ConditionContext) LOCATION() antlr.TerminalNode {
-	return s.GetToken(authzParserLOCATION, 0)
+func (s *ConditionContext) Condition_(i int) ICondition_Context {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ICondition_Context); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ICondition_Context)
 }
 
 func (s *ConditionContext) GetRuleContext() antlr.RuleContext {
@@ -856,17 +897,21 @@ func (s *ConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *authzParser) Condition() (localctx IConditionContext) {
 	localctx = NewConditionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, authzParserRULE_condition)
-	p.SetState(41)
+	p.SetState(45)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
-	switch p.GetTokenStream().LA(1) {
-	case authzParserT__13:
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 2, p.GetParserRuleContext()) {
+	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(35)
+			p.SetState(37)
+			p.Condition_()
+		}
+		{
+			p.SetState(38)
 			p.Match(authzParserT__13)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -874,7 +919,18 @@ func (p *authzParser) Condition() (localctx IConditionContext) {
 			}
 		}
 		{
-			p.SetState(36)
+			p.SetState(39)
+			p.Condition_()
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(41)
+			p.Condition_()
+		}
+		{
+			p.SetState(42)
 			p.Match(authzParserT__14)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -882,18 +938,116 @@ func (p *authzParser) Condition() (localctx IConditionContext) {
 			}
 		}
 		{
-			p.SetState(37)
-			p.Match(authzParserTIME_RANGE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.SetState(43)
+			p.Condition_()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// ICondition_Context is an interface to support dynamic dispatch.
+type ICondition_Context interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	TIME_RANGE() antlr.TerminalNode
+	LOCATION() antlr.TerminalNode
+
+	// IsCondition_Context differentiates from other interfaces.
+	IsCondition_Context()
+}
+
+type Condition_Context struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyCondition_Context() *Condition_Context {
+	var p = new(Condition_Context)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = authzParserRULE_condition_
+	return p
+}
+
+func InitEmptyCondition_Context(p *Condition_Context) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = authzParserRULE_condition_
+}
+
+func (*Condition_Context) IsCondition_Context() {}
+
+func NewCondition_Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Condition_Context {
+	var p = new(Condition_Context)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = authzParserRULE_condition_
+
+	return p
+}
+
+func (s *Condition_Context) GetParser() antlr.Parser { return s.parser }
+
+func (s *Condition_Context) TIME_RANGE() antlr.TerminalNode {
+	return s.GetToken(authzParserTIME_RANGE, 0)
+}
+
+func (s *Condition_Context) LOCATION() antlr.TerminalNode {
+	return s.GetToken(authzParserLOCATION, 0)
+}
+
+func (s *Condition_Context) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Condition_Context) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Condition_Context) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(authzListener); ok {
+		listenerT.EnterCondition_(s)
+	}
+}
+
+func (s *Condition_Context) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(authzListener); ok {
+		listenerT.ExitCondition_(s)
+	}
+}
+
+func (p *authzParser) Condition_() (localctx ICondition_Context) {
+	localctx = NewCondition_Context(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, authzParserRULE_condition_)
+	p.SetState(53)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetTokenStream().LA(1) {
 	case authzParserT__15:
-		p.EnterOuterAlt(localctx, 2)
+		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(38)
+			p.SetState(47)
 			p.Match(authzParserT__15)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -901,15 +1055,42 @@ func (p *authzParser) Condition() (localctx IConditionContext) {
 			}
 		}
 		{
-			p.SetState(39)
-			p.Match(authzParserT__14)
+			p.SetState(48)
+			p.Match(authzParserT__16)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 		{
-			p.SetState(40)
+			p.SetState(49)
+			p.Match(authzParserTIME_RANGE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case authzParserT__17:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(50)
+			p.Match(authzParserT__17)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(51)
+			p.Match(authzParserT__16)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(52)
 			p.Match(authzParserLOCATION)
 			if p.HasError() {
 				// Recognition error - abort rule

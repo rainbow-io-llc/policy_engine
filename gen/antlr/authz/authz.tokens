@@ -14,9 +14,11 @@ T__12=13
 T__13=14
 T__14=15
 T__15=16
-TIME_RANGE=17
-LOCATION=18
-WS=19
+T__16=17
+T__17=18
+TIME_RANGE=19
+LOCATION=20
+WS=21
 'ALLOW'=1
 'DENY'=2
 'FROM'=3
@@ -30,6 +32,8 @@ WS=19
 'use'=11
 'data'=12
 'feature'=13
-'time_range'=14
-'='=15
-'location'=16
+'AND'=14
+'OR'=15
+'time_range'=16
+'='=17
+'location'=18

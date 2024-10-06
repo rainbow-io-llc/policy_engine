@@ -24,12 +24,14 @@ func (al *AuthZListener) EnterRule(ctx *authz.RuleContext) {
 
 	if ctx.Condition() != nil {
 		time_range := ""
-		if ctx.Condition().TIME_RANGE() != nil {
-			time_range = ctx.Condition().TIME_RANGE().GetText()
-		}
 		location := ""
-		if ctx.Condition().LOCATION() != nil {
-			location = ctx.Condition().LOCATION().GetText()
+		for idx := range ctx.Condition().AllCondition_() {
+			if ctx.Condition().Condition_(idx).TIME_RANGE() != nil {
+				time_range = ctx.Condition().Condition_(idx).TIME_RANGE().GetText()
+			}
+			if ctx.Condition().Condition_(idx).LOCATION() != nil {
+				location = ctx.Condition().Condition_(idx).LOCATION().GetText()
+			}
 		}
 		fmt.Printf("TIME_RANGE: %s, LOCATION: %s\n", time_range, location)
 	}

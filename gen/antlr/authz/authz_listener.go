@@ -26,6 +26,9 @@ type authzListener interface {
 	// EnterCondition is called when entering the condition production.
 	EnterCondition(c *ConditionContext)
 
+	// EnterCondition_ is called when entering the condition_ production.
+	EnterCondition_(c *Condition_Context)
+
 	// ExitPolicy is called when exiting the policy production.
 	ExitPolicy(c *PolicyContext)
 
@@ -43,4 +46,7 @@ type authzListener interface {
 
 	// ExitCondition is called when exiting the condition production.
 	ExitCondition(c *ConditionContext)
+
+	// ExitCondition_ is called when exiting the condition_ production.
+	ExitCondition_(c *Condition_Context)
 }

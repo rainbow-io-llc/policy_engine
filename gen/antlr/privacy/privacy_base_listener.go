@@ -50,3 +50,9 @@ func (s *BaseprivacyListener) EnterCondition(ctx *ConditionContext) {}
 
 // ExitCondition is called when production condition is exited.
 func (s *BaseprivacyListener) ExitCondition(ctx *ConditionContext) {}
+
+// EnterCondition_ is called when production condition_ is entered.
+func (s *BaseprivacyListener) EnterCondition_(ctx *Condition_Context) {}
+
+// ExitCondition_ is called when production condition_ is exited.
+func (s *BaseprivacyListener) ExitCondition_(ctx *Condition_Context) {}
