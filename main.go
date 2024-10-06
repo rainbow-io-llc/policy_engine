@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	input := antlr.NewInputStream(`ALLOW service FROM collect TO data WHEN time_range = "09:00-17:00" AND location = "US";`)
+	input := antlr.NewInputStream(`ALLOW service Exec collect TO data;`)
 
 	lexer := authz.NewauthzLexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)

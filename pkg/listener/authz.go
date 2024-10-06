@@ -18,7 +18,10 @@ func (al *AuthZListener) EnterRule(ctx *authz.RuleContext) {
 	subject := ctx.Subject().GetText()
 	action := ctx.Action_().GetText()
 	object := ctx.Object().GetText()
-	condition := ctx.Condition().GetText()
+	condition := ""
+	if  ctx.Condition() != nil {
+		condition = ctx.Condition().GetText()
+	}
 
 	fmt.Printf("Rule parsed: subject=%s, action=%s, object=%s, condition=%s\n", subject, action, object, condition)
 

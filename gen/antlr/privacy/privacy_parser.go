@@ -46,27 +46,25 @@ func privacyParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 19, 53, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 19, 48, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 1, 0, 4, 0, 14, 8, 0, 11, 0, 12, 0, 15, 1, 1, 1, 1, 1, 1,
-		1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 25, 8, 1, 1, 1, 1, 1, 3, 1, 29, 8, 1, 1,
-		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 3,
-		4, 43, 8, 4, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 3, 5, 51, 8, 5, 1, 5,
-		0, 0, 6, 0, 2, 4, 6, 8, 10, 0, 2, 1, 0, 6, 8, 1, 0, 9, 11, 51, 0, 13, 1,
-		0, 0, 0, 2, 28, 1, 0, 0, 0, 4, 30, 1, 0, 0, 0, 6, 32, 1, 0, 0, 0, 8, 42,
-		1, 0, 0, 0, 10, 50, 1, 0, 0, 0, 12, 14, 3, 2, 1, 0, 13, 12, 1, 0, 0, 0,
-		14, 15, 1, 0, 0, 0, 15, 13, 1, 0, 0, 0, 15, 16, 1, 0, 0, 0, 16, 1, 1, 0,
-		0, 0, 17, 29, 5, 1, 0, 0, 18, 19, 5, 2, 0, 0, 19, 20, 3, 4, 2, 0, 20, 21,
-		5, 3, 0, 0, 21, 24, 3, 6, 3, 0, 22, 23, 5, 4, 0, 0, 23, 25, 3, 8, 4, 0,
-		24, 22, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26, 1, 0, 0, 0, 26, 27, 5,
-		5, 0, 0, 27, 29, 1, 0, 0, 0, 28, 17, 1, 0, 0, 0, 28, 18, 1, 0, 0, 0, 29,
-		3, 1, 0, 0, 0, 30, 31, 7, 0, 0, 0, 31, 5, 1, 0, 0, 0, 32, 33, 7, 1, 0,
-		0, 33, 7, 1, 0, 0, 0, 34, 35, 3, 10, 5, 0, 35, 36, 5, 12, 0, 0, 36, 37,
-		3, 10, 5, 0, 37, 43, 1, 0, 0, 0, 38, 39, 3, 10, 5, 0, 39, 40, 5, 13, 0,
-		0, 40, 41, 3, 10, 5, 0, 41, 43, 1, 0, 0, 0, 42, 34, 1, 0, 0, 0, 42, 38,
-		1, 0, 0, 0, 43, 9, 1, 0, 0, 0, 44, 45, 5, 14, 0, 0, 45, 46, 5, 15, 0, 0,
-		46, 51, 5, 17, 0, 0, 47, 48, 5, 16, 0, 0, 48, 49, 5, 15, 0, 0, 49, 51,
-		5, 18, 0, 0, 50, 44, 1, 0, 0, 0, 50, 47, 1, 0, 0, 0, 51, 11, 1, 0, 0, 0,
-		5, 15, 24, 28, 42, 50,
+		1, 1, 1, 1, 1, 1, 3, 1, 24, 8, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 1, 3, 1,
+		4, 1, 4, 1, 4, 5, 4, 35, 8, 4, 10, 4, 12, 4, 38, 9, 4, 1, 5, 1, 5, 1, 5,
+		1, 5, 1, 5, 1, 5, 3, 5, 46, 8, 5, 1, 5, 0, 0, 6, 0, 2, 4, 6, 8, 10, 0,
+		4, 1, 0, 1, 2, 1, 0, 6, 8, 1, 0, 9, 11, 1, 0, 12, 13, 45, 0, 13, 1, 0,
+		0, 0, 2, 17, 1, 0, 0, 0, 4, 27, 1, 0, 0, 0, 6, 29, 1, 0, 0, 0, 8, 31, 1,
+		0, 0, 0, 10, 45, 1, 0, 0, 0, 12, 14, 3, 2, 1, 0, 13, 12, 1, 0, 0, 0, 14,
+		15, 1, 0, 0, 0, 15, 13, 1, 0, 0, 0, 15, 16, 1, 0, 0, 0, 16, 1, 1, 0, 0,
+		0, 17, 18, 7, 0, 0, 0, 18, 19, 3, 4, 2, 0, 19, 20, 5, 3, 0, 0, 20, 23,
+		3, 6, 3, 0, 21, 22, 5, 4, 0, 0, 22, 24, 3, 8, 4, 0, 23, 21, 1, 0, 0, 0,
+		23, 24, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26, 5, 5, 0, 0, 26, 3, 1, 0,
+		0, 0, 27, 28, 7, 1, 0, 0, 28, 5, 1, 0, 0, 0, 29, 30, 7, 2, 0, 0, 30, 7,
+		1, 0, 0, 0, 31, 36, 3, 10, 5, 0, 32, 33, 7, 3, 0, 0, 33, 35, 3, 10, 5,
+		0, 34, 32, 1, 0, 0, 0, 35, 38, 1, 0, 0, 0, 36, 34, 1, 0, 0, 0, 36, 37,
+		1, 0, 0, 0, 37, 9, 1, 0, 0, 0, 38, 36, 1, 0, 0, 0, 39, 40, 5, 14, 0, 0,
+		40, 41, 5, 15, 0, 0, 41, 46, 5, 17, 0, 0, 42, 43, 5, 16, 0, 0, 43, 44,
+		5, 15, 0, 0, 44, 46, 5, 18, 0, 0, 45, 39, 1, 0, 0, 0, 45, 42, 1, 0, 0,
+		0, 46, 11, 1, 0, 0, 0, 4, 15, 23, 36, 45,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -405,84 +403,63 @@ func (p *privacyParser) Rule_() (localctx IRuleContext) {
 	p.EnterRule(localctx, 2, privacyParserRULE_rule)
 	var _la int
 
-	p.SetState(28)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(17)
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == privacyParserT__0 || _la == privacyParserT__1) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
+	}
+	{
+		p.SetState(18)
+		p.Action_()
+	}
+	{
+		p.SetState(19)
+		p.Match(privacyParserT__2)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(20)
+		p.Target()
+	}
+	p.SetState(23)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
+	_la = p.GetTokenStream().LA(1)
 
-	switch p.GetTokenStream().LA(1) {
-	case privacyParserT__0:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(17)
-			p.Match(privacyParserT__0)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-
-	case privacyParserT__1:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(18)
-			p.Match(privacyParserT__1)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(19)
-			p.Action_()
-		}
-		{
-			p.SetState(20)
-			p.Match(privacyParserT__2)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
+	if _la == privacyParserT__3 {
 		{
 			p.SetState(21)
-			p.Target()
-		}
-		p.SetState(24)
-		p.GetErrorHandler().Sync(p)
-		if p.HasError() {
-			goto errorExit
-		}
-		_la = p.GetTokenStream().LA(1)
-
-		if _la == privacyParserT__3 {
-			{
-				p.SetState(22)
-				p.Match(privacyParserT__3)
-				if p.HasError() {
-					// Recognition error - abort rule
-					goto errorExit
-				}
-			}
-			{
-				p.SetState(23)
-				p.Condition()
-			}
-
-		}
-		{
-			p.SetState(26)
-			p.Match(privacyParserT__4)
+			p.Match(privacyParserT__3)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
+		{
+			p.SetState(22)
+			p.Condition()
+		}
 
-	default:
-		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-		goto errorExit
+	}
+	{
+		p.SetState(25)
+		p.Match(privacyParserT__4)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
 errorExit:
@@ -566,7 +543,7 @@ func (p *privacyParser) Action_() (localctx IActionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(30)
+		p.SetState(27)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&448) != 0) {
@@ -658,7 +635,7 @@ func (p *privacyParser) Target() (localctx ITargetContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(32)
+		p.SetState(29)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&3584) != 0) {
@@ -793,53 +770,43 @@ func (s *ConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *privacyParser) Condition() (localctx IConditionContext) {
 	localctx = NewConditionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, privacyParserRULE_condition)
-	p.SetState(42)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(31)
+		p.Condition_()
+	}
+	p.SetState(36)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
+	_la = p.GetTokenStream().LA(1)
 
-	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 3, p.GetParserRuleContext()) {
-	case 1:
-		p.EnterOuterAlt(localctx, 1)
+	for _la == privacyParserT__11 || _la == privacyParserT__12 {
 		{
-			p.SetState(34)
-			p.Condition_()
-		}
-		{
-			p.SetState(35)
-			p.Match(privacyParserT__11)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
+			p.SetState(32)
+			_la = p.GetTokenStream().LA(1)
+
+			if !(_la == privacyParserT__11 || _la == privacyParserT__12) {
+				p.GetErrorHandler().RecoverInline(p)
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
 			}
 		}
 		{
-			p.SetState(36)
+			p.SetState(33)
 			p.Condition_()
 		}
 
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(38)
-			p.Condition_()
+		p.SetState(38)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
 		}
-		{
-			p.SetState(39)
-			p.Match(privacyParserT__12)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(40)
-			p.Condition_()
-		}
-
-	case antlr.ATNInvalidAltNumber:
-		goto errorExit
+		_la = p.GetTokenStream().LA(1)
 	}
 
 errorExit:
@@ -933,7 +900,7 @@ func (s *Condition_Context) ExitRule(listener antlr.ParseTreeListener) {
 func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 	localctx = NewCondition_Context(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, privacyParserRULE_condition_)
-	p.SetState(50)
+	p.SetState(45)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -943,7 +910,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 	case privacyParserT__13:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(44)
+			p.SetState(39)
 			p.Match(privacyParserT__13)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -951,7 +918,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 			}
 		}
 		{
-			p.SetState(45)
+			p.SetState(40)
 			p.Match(privacyParserT__14)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -959,7 +926,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 			}
 		}
 		{
-			p.SetState(46)
+			p.SetState(41)
 			p.Match(privacyParserTIME_RANGE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -970,7 +937,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 	case privacyParserT__15:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(47)
+			p.SetState(42)
 			p.Match(privacyParserT__15)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -978,7 +945,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 			}
 		}
 		{
-			p.SetState(48)
+			p.SetState(43)
 			p.Match(privacyParserT__14)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -986,7 +953,7 @@ func (p *privacyParser) Condition_() (localctx ICondition_Context) {
 			}
 		}
 		{
-			p.SetState(49)
+			p.SetState(44)
 			p.Match(privacyParserLOCATION)
 			if p.HasError() {
 				// Recognition error - abort rule
